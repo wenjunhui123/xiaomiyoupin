@@ -10,7 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
-
+/* 导入公共样式 */
+import './assets/css/reset.min.css';
 
 new Vue({
   router,
