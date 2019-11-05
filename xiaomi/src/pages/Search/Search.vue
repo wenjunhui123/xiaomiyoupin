@@ -3,38 +3,82 @@
     <header>
       <i class="el-icon-arrow-left" @click="back"></i>
       <el-input placeholder="搜一搜" prefix-icon="el-icon-search" v-model="input1"></el-input>
-      <el-button type="primary" round>搜索</el-button>
+      <el-button type="primary" round @click="search">搜索</el-button>
     </header>
     <div class="history">
       <div class="title">
         <h3>历史记录</h3>
         <i class="el-icon-delete"></i>
       </div>
-      
+      <div class="historyContent">
+        <el-button
+          type="info"
+          round
+          v-for="(item,index) in history"
+          v-text="item.title"
+          :key="index" 
+        ></el-button>
+      </div>
     </div>
     <div class="content">
-
+      <div class="title">
+        <h3>搜索发现</h3>
+      </div>
+      <div class="searchCon">
+        <el-button
+          type="info"
+          round
+          v-for="(item,index) in hot"
+          v-text="item.title"
+          :key="index" @click="putHis(item)"
+        ></el-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import search from '../../api/search';
+import types from "../../store/store-types";
 export default {
   data() {
     return {
-      input1: ""
+      input1: "",
+      hot: "",
+      detailSearch: "",
+      history: ""
     };
+  },
+  created() {
+    if (this.$store.state.search.searchList.detailSearch === null) {
+      this.$store.dispatch(types.SEARCH_QUERY_SEARCHLIST_ACTION, null);
+      return;
+    }
+    this.detailSearch = this.$store.state.search.searchList.detailSearch;
+    this.hot = this.$store.state.search.searchList.hot;
+    this.history = this.$store.state.search.searchList.history;
   },
   methods: {
     back() {
       window.history.go(-1);
-      search.querySearchList().then(result=>{
-        window.console.log(result.data)
-      })
+    },
+    search() {
+      window.console.log(this.hot, this.history, this.detailSearch);
+    },
+    putHis(){
+      
     }
+  
   },
-  components: {}
+  components: {},
+  updated() {
+    window.console.log(this.hot);
+  },
+  computed: {
+    hotc() {
+      let hot = this.$store.state.search.searchList.hot;
+      return hot;
+    }
+  }
 };
 </script>
 
@@ -60,28 +104,48 @@ body {
         border-radius: 50%;
       }
     }
-    .history{
-      width:100%;
-      .title{
+    .history {
+      width: 100%;
+      .title {
         width: 100%;
-        height: .4rem;
+        height: 0.6rem;
         display: flex;
-        font-size: .2rem;
-        line-height: .4rem;
-        h3{
+        font-size: 0.2rem;
+        line-height: 0.6rem;
+        h3 {
           width: 80%;
           height: 100%;
-          padding-left: .2rem; 
+          padding-left: 0.2rem;
           text-align: left;
         }
-        i{
+        i {
           width: 20%;
           height: 100%;
-          padding-right: .2rem;
+          padding-right: 0.2rem;
           text-align: right;
-          line-height: .4rem;
-          color: lightgrey;
-          font-size: .16rem;
+          line-height: 0.6rem;
+          color: darkgrey;
+          font-size: 0.16rem;
+        }
+      }
+      .historyContent {
+        padding: 0.1rem;
+      }
+    }
+    .content {
+      padding-top: 0.2rem;
+      width: 100%;
+      padding: 0.2rem;
+      .title {
+        height: 0.6rem;
+        display: flex;
+        font-size: 0.2rem;
+        line-height: 0.6rem;
+      }
+      .searchCon{
+        width: 100%;
+        button{
+          margin: .1rem;
         }
       }
     }
