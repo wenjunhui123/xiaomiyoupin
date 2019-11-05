@@ -38,12 +38,15 @@
                     </div>
                 </div>
             </div>
+<Tab></Tab>
   </div>
 </template>
 
 <script>
+import Tab from '../../components/Tab';
 export default {
   components: {
+      Tab
   }
 }
 </script>
