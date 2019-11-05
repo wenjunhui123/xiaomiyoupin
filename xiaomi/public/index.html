@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,3 +12,37 @@
     <div id="app"></div>
   </body>
 </html>
+=======
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>xiaomi</title>
+</head>
+
+<body>
+  <script>
+    ~ function () {
+      let evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
+
+      function computed() {
+        let HTML = document.documentElement,
+          deviceW = HTML.clientWidth,
+          designW = 640,
+          ratio = deviceW / designW * 100;
+        if (deviceW >= designW) ratio = 100;
+        HTML.style.fontSize = ratio + 'px';
+      }
+      computed();
+      window.addEventListener(evt, computed);
+    }()
+  </script>
+
+  <div id="app"></div>
+
+</body>
+
+</html>
+>>>>>>> 6d160575530bb274d45e78ab691e7f4df0eead25
