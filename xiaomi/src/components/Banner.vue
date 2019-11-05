@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <swiper :options="swiperOption" v-if="arr.length!=0">
+  <div class="swiper-container'" >
+    <swiper :options="swiperOption" v-if="arr.length!=0" class='swiper-wrapper'>
       <swiper-slide class="swiper-slide" v-for="item in arr" :key="item.id">
         <img :src="item.pic" alt />
       </swiper-slide>
