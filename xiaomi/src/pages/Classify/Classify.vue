@@ -13,23 +13,7 @@
     <div class="g-body">
         <div class="nav">
                 <ul>
-                    <li class="current" :type="type===0?'success':'info'" @click="type=0">有品推荐</li>
-                    <li class="" :type="type===1?'success':'info'" @click="type=1">居家</li>
-                    <li class="" :type="type===2?'success':'info'" @click="type=2">家电</li>
-                    <li class="" :type="type===3?'success':'info'" @click="type=3">手机</li>
-                    <li class="" :type="type===4?'success':'info'" @click="type=4">影音</li>
-                    <li class="" :type="type===5?'success':'info'" @click="type=5">日杂</li>
-                    <li class="" :type="type===6?'success':'info'" @click="type=6">服饰</li>
-                    <li class="" :type="type===7?'success':'info'" @click="type=7">健康</li>
-                    <li class="" :type="type===8?'success':'info'" @click="type=8">餐厨</li>
-                    <li class="" :type="type===9?'success':'info'" @click="type=9">智能</li>
-                    <li class="" :type="type===10?'success':'info'" @click="type=10">洗护</li>
-                    <li class="" :type="type===11?'success':'info'" @click="type=11">箱包</li>
-                    <li class="" :type="type===12?'success':'info'" @click="type=12">婴童</li>
-                    <li class="" :type="type===13?'success':'info'" @click="type=13">饮食</li>
-                    <li class="" :type="type===14?'success':'info'" @click="type=14">配件</li>
-                    <li class="" :type="type===15?'success':'info'" @click="type=15">出行</li>
-                    <li class="" :type="type===16?'success':'info'" @click="type=16">品牌</li>
+                    <li :class="{current:index===ins}"  v-for="(item,index) in itemList" :key="index" @click="active(index)">{{item.title}}</li>
                 </ul>
             </div>
             <Recommend></Recommend>
@@ -42,10 +26,82 @@
 import Tab from '../../components/Tab';
 import Recommend from './Recommend';
 export default {
-  components: {
-      Tab,
-      Recommend
-  }
+    data(){
+        return {
+          ins:0,
+          itemList:[{
+              title:'11.11推荐'
+          },
+          {
+              title:'家用电器'
+          },
+          {
+              title:'家具家装'
+          },
+          {
+              title:'居家餐厅'
+          },
+          {
+              title:'智能家庭'
+          },
+          {
+              title:'日用文创'
+          },{
+              title:'电视影音'
+          },
+          {
+              title:'手机电脑'
+          },
+          {
+              title:'数码周边'
+          },
+          {
+              title:'服饰配饰'
+          },
+          {
+              title:'鞋靴箱包'
+          },
+          {
+              title:'运动户外'
+          },
+          {
+              title:'出行车品'
+          },
+          {
+              title:'美妆个护'
+          },
+          {
+              title:'健康保健'
+          },
+          {
+              title:'美食酒饮'
+          },
+          {
+              title:'母婴亲子'
+          },{
+              title:'宠物生活'
+          },
+          {
+              title:'有品海购'
+          },
+          {
+              title:'DLAB'
+          },
+          {
+              title:'品牌墙'
+          }] 
+        }
+    },
+    components: {
+        Tab,
+        Recommend
+    },
+    methods:{
+        active(num){
+            this.ins=num
+        }
+    }
+
 }
 </script>
 
@@ -101,7 +157,6 @@ export default {
             box-sizing: border-box;
             width: 25%;
             height: 100%;
-            padding-top: .1rem;
             border-right: .01rem solid rgba(0, 0, 0, .1);
             text-align: center;
             background: #FFF;
@@ -115,10 +170,10 @@ export default {
                 height: .24rem;
                 line-height: .24rem;
                 white-space: nowrap;
-                font-size: .14rem;
-                margin:.1rem 0;
+                font-size: .13rem;
+                color: rgb(102, 102, 102);
+                margin:.13rem 0 !important;
                 &.current{
-
                     background: linear-gradient(to right, rgb(241, 83, 56), rgb(223, 20, 15));
                     border-radius: 12px;
                     margin: 0 .08rem;
