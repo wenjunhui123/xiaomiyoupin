@@ -12,7 +12,7 @@ import Collect from '../pages/Personal/Collect';
 import Info from '../pages/Personal/Info';
 import Login from '../pages/Personal/Login';
 import Order from '../pages/Personal/Order';
-
+import Vip from '../pages/Vip/Vip';
 Vue.use(VueRouter);
 export default new VueRouter({
     mode: 'hash',
@@ -57,6 +57,10 @@ export default new VueRouter({
         path: '/search',
         component: Search
     }, {
+        path: '/vip',
+        component: Vip
+    }, 
+   {
         path: '/*',
         redirect: '/home'
     }, ]

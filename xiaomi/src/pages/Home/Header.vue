@@ -3,10 +3,10 @@
     <div class="logo-box">
       <img src="../../assets/images/navi_title_v2.png" alt />
     </div>
-    <div class="search-box">
+    <router-link class="search-box" to="/search">
       <img src="https://static.home.mi.com/youpin/static/m/res/images/home_search.png" alt />
       <span>年货嗨抢，最高直降1000</span>
-    </div>
+    </router-link>
     <div class="msg-box">
       <div class="msg"></div>
     </div>
