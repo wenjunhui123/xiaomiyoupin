@@ -8,7 +8,7 @@
     <div class="history">
       <div class="title">
         <h3>历史记录</h3>
-        <i class="el-icon-delete"></i>
+        <i class="el-icon-delete" @click="deleteH"></i>
       </div>
       <div class="historyContent">
         <el-button
@@ -30,7 +30,8 @@
           round
           v-for="(item,index) in hot"
           v-text="item.title"
-          :key="index" @click="putHis(item)"
+          :key="index"
+          @click="putHis(item)"
         ></el-button>
       </div>
     </div>
@@ -62,16 +63,25 @@ export default {
       window.history.go(-1);
     },
     search() {
-      window.console.log(this.hot, this.history, this.detailSearch);
+      this.$router.push({path:'/detail',query: { title: this.input1 }});
+
     },
-    putHis(){
-      
+    putHis(item) {
+      this.history = this.history.filter(item1 => {
+        return item1.gid !== item.gid;
+      });
+      this.history.push(item);
+      this.input1 = item.title;
+    },
+    deleteH() {
+      this.history = [];
     }
-  
   },
   components: {},
   updated() {
-    window.console.log(this.hot);
+    this.$store.state.search.searchList.detailSearch = this.detailSearch;
+    this.$store.state.search.searchList.hot = this.hot;
+    this.$store.state.search.searchList.history = this.history;
   },
   computed: {
     hotc() {
@@ -130,6 +140,9 @@ body {
       }
       .historyContent {
         padding: 0.1rem;
+        button {
+          margin: 0.05rem;
+        }
       }
     }
     .content {
@@ -142,10 +155,10 @@ body {
         font-size: 0.2rem;
         line-height: 0.6rem;
       }
-      .searchCon{
+      .searchCon {
         width: 100%;
-        button{
-          margin: .1rem;
+        button {
+          margin: 0.05rem;
         }
       }
     }
