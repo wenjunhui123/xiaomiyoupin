@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="top">
+    <div class="top" @click="go" >
         <div class="inp">
             <a class="icon">
                 <img src="../../assets/images/home_search.png" alt="">
@@ -99,6 +99,9 @@ export default {
     methods:{
         active(num){
             this.ins=num
+        },
+        go(){
+            this.$router.push('/search')
         }
     }
 
