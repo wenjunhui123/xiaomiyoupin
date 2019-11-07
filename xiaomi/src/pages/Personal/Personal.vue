@@ -4,7 +4,7 @@
       <div class="center">
         <div class="right"><span></span></div>
         <p>
-          <a href="">请登录</a>
+          <router-link to="/personal/login">请登录</router-link>
         </p>
         <div class="icon">
         <img src="https://app.youpin.mi.com/youpin/static/m/res/images/icon_default_head_portrait.png" alt="">
@@ -54,7 +54,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/personal_icon_assets.png" alt="">
            </p>
-           <a href="">我的资产 </a>
+           <a >我的资产 </a>
            <div class="arrow">
              优惠券/积分
              <span><img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""></span>
@@ -65,7 +65,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/pin_logo.jpg" alt="">
            </p>
-           <a href="">拼团 </a>
+           <a >拼团 </a>
            <div class="arrow1">
               <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
@@ -75,7 +75,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/personal_icon_collection.png" alt="">
            </p>
-           <a href="">我的收藏 </a>
+           <a >我的收藏 </a>
            <div class="arrow1">
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
@@ -87,7 +87,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/personal_icon_address.png" alt="">
            </p>
-           <a href="">地址管理 </a>
+           <a >地址管理 </a>
            <div class="arrow1">
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
@@ -97,7 +97,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/mijiashop_icon_more_qualifi.png" alt="">
            </p>
-           <a href="">资质证照 </a>
+           <a >资质证照 </a>
            <div class="arrow1">
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
@@ -107,7 +107,7 @@
            <p>
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/mijiashop_icon_more_protocol.png" alt="">
            </p>
-           <a href="">协议规则 </a>
+           <a >协议规则 </a>
            <div class="arrow1">
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
@@ -117,14 +117,14 @@
            <p>
              <img src=" https://app.youpin.mi.com/youpin/static/m/res/images/personal_icon_feedback.png" alt="">
            </p>
-           <a href="">帮助与反馈 </a>
+           <a >帮助与反馈 </a>
            <div class="arrow1">
              <img src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png" alt=""> 
            </div>
           </li>
        </ul>
      </div>
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
     <Tab></Tab>
   </div>
 </template>
@@ -133,7 +133,8 @@
 import Tab from '../../components/Tab';
 export default {
   components: {
-    Tab
+    Tab,
+
   }
 }
 </script>

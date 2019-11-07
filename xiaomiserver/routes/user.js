@@ -19,15 +19,12 @@ route.post('/login', (req, res) => {
     password = handleMD5(password);
 
     const item = req.$userDATA.find(item => {
-        return (item.name === account || item.email === account || item.phone === account) && password === item.password;
+        return (item.account === account) && password === item.password;
     });
     if (item) {
         req.session.userID = parseInt(item.id);
-        req.session.name = getUserInfo(item.id, req).power
-        req.session.name = getUserInfo(item.id, req).power
         res.send(success(true, {
-            name: req.session.name,
-            power: req.session.power
+            account: req.session.account,
         }));
         return;
     }
@@ -51,7 +48,6 @@ route.get('/login', (req, res) => {
 //退出登录
 route.get('/signout', (req, res) => {
     req.session.userID = null;
-    req.session.power = null;
     res.send(success(true));
 })
 
@@ -59,30 +55,35 @@ route.get('/signout', (req, res) => {
 route.post('/add', (req, res) => {
     let $userDATA = req.$userDATA,
         passDATA = null;
+        let {
+            account = ''
+        } = req.body; 
     let id = $userDATA.length === 0 ? 1 : (parseFloat($userDATA[$userDATA.length - 1]['id']) + 1);
     let a = $userDATA.find(item => {
-        return item.name === req.body.name;
+        return item.account === account;
     })
     if (a) {
         return res.send(success(false, {
-            context: '该账户已被注册！！！'
+            warn: '该账户已被注册！！！'
         }))
-    }
+    };
+
+
     passDATA = Object.assign({
         id,
-        name: '',
         password: handleMD5('e807f1fcf82d132f9bb018ca6738a19f'),
         sex: 0,
-        email: '',
-        phone: '',
-        desc: '',
         time: new Date().getTime(),
         state: 0
     }, (req.body || {}));
     $userDATA.push(passDATA);
-    writeFile('../json/user.json', $userDATA).then(() => {
+    writeFile('../xiaomiserver/json/user.json', $userDATA).then(() => {
+        console.log(1);
         res.send(success(true));
     }).catch(() => {
+        console.log($userDATA,writeFile);
         res.send(success(false));
     })
 })
+
+module.exports = route

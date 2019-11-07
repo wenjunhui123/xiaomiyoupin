@@ -31,7 +31,7 @@ export default new VueRouter({
     }, {
         path: '/personal',
         component: Personal,
-        children: [{
+        childrens: [{
             path: '/personal/collect',
             component: Collect
         }, {
