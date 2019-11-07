@@ -6,10 +6,14 @@
       <home-imagenav></home-imagenav>
       <home-more name="热门"></home-more>
       <home-hot></home-hot>
+      <home-more name="限时购"></home-more>
+      <time-buy></time-buy>
+       <home-more name="手机"></home-more>
+       <home-phone></home-phone>
       <home-wait></home-wait>
       <Tab></Tab>
       <router-link class="youpin" to="/vip">
-        <a href="">
+        <a href>
           <img
             src="https://img.youpin.mi-img.com/editor1/24385a37c19e08f9188f5713a6fbbc55.gif?w=250&h=250"
             alt
@@ -28,6 +32,8 @@ import HomeImagenav from "./imageNav";
 import HomeHot from "./Hot";
 import HomeMore from "../../components/More";
 import HomeWait from "./Wait";
+import TimeBuy from "./TimeBuy";
+import HomePhone from "./Phone";
 
 export default {
   components: {
@@ -37,12 +43,13 @@ export default {
     HomeImagenav,
     HomeHot,
     HomeMore,
-    HomeWait
+    TimeBuy,
+    HomePhone,
+    HomeWait  
   },
   data() {
     return {};
-  },
-
+  }
 };
 </script>
 

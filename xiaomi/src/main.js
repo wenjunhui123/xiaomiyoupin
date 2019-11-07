@@ -8,16 +8,16 @@ import './assets/css/common.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import "swiper/css/swiper.css";
-import VueLazyload from 'vue-lazyload';
+// import VueLazyload from 'vue-lazyload';
 
 
 Vue.use(VueAwesomeSwiper);
 Vue.use(ElementUI);
-Vue.use(VueLazyload,{
-  error:'./assets/images/std_shop_details_icon_close_normal.png',
-  loading:'./assets/images/loading_v2.png',
-  try:6,
-});
+// Vue.use(VueLazyload,{
+//   error:'./assets/images/std_shop_details_icon_close_normal.png',
+//   loading:'./assets/images/loading_v2.png',
+//   try:6,
+// });
 
 Vue.config.productionTip = false
 
