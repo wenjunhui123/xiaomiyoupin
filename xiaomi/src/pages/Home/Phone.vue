@@ -15,7 +15,7 @@
             <div class="product-list-top">
               <div>
                 <img
-                  :src="url"
+                  v-lazy="url"
                   alt
                 />
               </div>

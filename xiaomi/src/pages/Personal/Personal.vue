@@ -218,7 +218,7 @@ export default {
     }
     span{
       display: inline-block;
-      float: right;
+     
       width: .15rem;
       img{
         width: 100%;

@@ -1,6 +1,10 @@
 <template>
   <div class="timer-group">
-    <div class="timer-group-item" v-for="({gid,title,url,ratednum,soldnum,price,oprice},index) in data" :key="index">
+    <div
+      class="timer-group-item"
+      v-for="({gid,title,url,ratednum,soldnum,price,oprice},index) in data"
+      :key="index"
+    >
       <div class="timer-container">
         <div class="timer-container-title marl">
           <p>{{title}}</p>
@@ -20,10 +24,7 @@
           </span>
         </div>
         <div class="timer-container-img">
-          <img
-            :src="url"
-            alt
-          />
+          <img v-lazy="url" alt />
         </div>
       </div>
     </div>

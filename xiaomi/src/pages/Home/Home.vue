@@ -8,8 +8,8 @@
       <home-hot></home-hot>
       <home-more name="限时购"></home-more>
       <time-buy></time-buy>
-       <home-more name="手机"></home-more>
-       <home-phone></home-phone>
+      <home-more name="手机"></home-more>
+      <home-phone></home-phone>
       <home-wait></home-wait>
       <Tab></Tab>
       <router-link class="youpin" to="/vip">
@@ -34,7 +34,6 @@ import HomeMore from "../../components/More";
 import HomeWait from "./Wait";
 import TimeBuy from "./TimeBuy";
 import HomePhone from "./Phone";
-
 export default {
   components: {
     Tab,
@@ -45,7 +44,7 @@ export default {
     HomeMore,
     TimeBuy,
     HomePhone,
-    HomeWait  
+    HomeWait
   },
   data() {
     return {};

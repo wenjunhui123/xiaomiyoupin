@@ -1,7 +1,7 @@
 <template>
   <div class="link-box">
     <a href class="react-view" v-for="item in data" :key="item.id">
-      <img :src="item.pic" alt />
+      <img v-lazy="item.pic" alt />
     </a>
   </div>
 </template>
