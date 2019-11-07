@@ -4,5 +4,12 @@ import axios from './axios';
  function querySearchList(){
      return axios.get('')
  }
+//注册
+function registry(account,password){
+    return axios.post('/add',{
+        account,
+        password
+    })
+}
 
- export default {querySearchList}
+ export default {querySearchList,registry}

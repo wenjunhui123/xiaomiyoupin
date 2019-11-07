@@ -1,25 +1,53 @@
-let express = require('express');
-let app = express();
-app.listen(9999);
-let path = require('path');
-let session = require('express-session');
-let bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(express.static('resource'));
-app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: 'wenjunhui'
-}));
-//中间件 允许跨域
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:3000");
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-    if(req.method == 'OPTIONS') res.send();else next();
-})
-let id = '';
-//中间件 处理传进来的分类 id
+const CONFIG = require('./config'),
+      session = require('express-session'),
+      bodyParser = require('body-parser');
 
+//CREATE SERVER
+const express = require('express'),
+      app = express();
+app.listen(CONFIG.PORT,()=>{
+    console.log(`THE WEB SERVER IS CREATE SUCCESSED AND IS LISTENING TO THE PORT:${CONFIG.PORT}`);
+});
+
+//middle ware
+app.use((req,res,next)=>{
+ const {
+     ALLOW_ORIGIN,
+     ALLOW_METHODS,
+     HEADERS,
+     CREDENTIALS
+ } = CONFIG.CROS;
+ res.headerr("Access-Control-Allow-Origin",ALLOW_ORIGIN);
+ res.header("Access-Control-Allow-Credentials",CREDENTIALS);
+ res.header("Access-Control-Allow-Headers",HEADERS)
+res.header("Access-Control-Allow-Methods",ALLOW_METHODS);
+req.method === 'OPTIONS' ? res.send('CURRENT SERVICES SUPPORT CROSS DOMAIN REQUESTS!'):next();
+});
+app.use(session(CONFIG.SESSION));
+app.use(bodyParser.urlencoded({
+    extended:false
+}));
+
+/* QUERY DATA */
+const {
+    readFile
+} = require('./utils/promiseFs');
+
+const {
+    filterInvalid
+} = require ('./utils/tools');
+
+app.use(async (req,res,next)=>{
+req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
+next();
+})
+
+/* 路由匹配 */
+
+app.use('/user',require('./routes/user'));
+
+app.use((req,res)=>{
+  res.status(404);
+  res.send('NOT FOUND')
+})
 
