@@ -6,10 +6,10 @@ import axios from './axios';
  }
 //注册
 function registry(account,password){
-    return axios.post('/add',{
+    return axios.post('/user/add',{
         account,
         password
     })
 }
 
- export default {querySearchList,registry}
+export default {querySearchList,registry}
