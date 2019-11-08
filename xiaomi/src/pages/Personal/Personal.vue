@@ -4,14 +4,13 @@
       <div class="center">
         <div class="right"><span></span></div>
         <p>
-          <router-link to="/personal/login">请登录</router-link>
+          <router-link to="/personal/login" @click="login">请登录</router-link>
         </p>
         <div class="icon">
         <img src="https://app.youpin.mi.com/youpin/static/m/res/images/icon_default_head_portrait.png" alt="">
       </div>
     
       </div>
-      
     </div>
     <div class="box"></div>
     <!-- 我的订单 -->
@@ -124,14 +123,24 @@
           </li>
        </ul>
      </div>
-    <!-- <router-view></router-view> -->
     <Tab></Tab>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Tab from '../../components/Tab';
 export default {
+  data(){
+  return {
+  disvable:false,
+  }
+  },
+  methods:{
+    login(){
+      this.disvable = true;
+    }
+  },
   components: {
     Tab,
 
