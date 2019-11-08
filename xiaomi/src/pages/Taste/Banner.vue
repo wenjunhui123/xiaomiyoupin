@@ -43,7 +43,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 // import "swiper/dist/css/swiper.css";
+=======
+import "swiper/css/swiper.css";
+>>>>>>> b86a7edf4e32b612c1a294f646a85fb19e7d148d
 
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 

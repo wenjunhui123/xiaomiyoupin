@@ -14,17 +14,16 @@ const {
 route.post('/login', (req, res) => {
     let {
         account = '',
-            password = ''
+        password = ''
     } = req.body || {};
-    password = handleMD5(password);
-
+    // password = handleMD5(password);
     const item = req.$userDATA.find(item => {
         return (item.account === account) && password === item.password;
     });
     if (item) {
         req.session.userID = parseInt(item.id);
         res.send(success(true, {
-            account: req.session.account,
+          account: req.session.account,
         }));
         return;
     }
