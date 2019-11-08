@@ -7,7 +7,7 @@
             <span></span>
           </div>
           <p @click="login">
-            <router-link to="/personal/login">请登录</router-link>
+            <router-link to="/personal/login">{{$store.state.account?$store.state.account:'请登录'}}</router-link>
           </p>
           <div class="icon">
             <img

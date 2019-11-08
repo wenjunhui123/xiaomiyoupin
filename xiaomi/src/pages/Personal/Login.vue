@@ -31,24 +31,47 @@ export default {
         .catch(_ => {});
     },
     sure() {
+      search.login(this.account, this.password).then(
+        result => {
+          if (parseInt(result.code) === 0) {
+            this.$message("恭喜您，登录成功");
+            this.dialogVisible = false;
+            this.$store.commit("loginShow", false);
+            this.$store.commit("personalShow", true);
+            this.$store.commit("accountMu", this.account);
+            this.$router.push("/personal");
+            return;
+          };
+          this.dialogVisible = true;
+           this.$message("账号或者密码不匹配，请重新输入");
+        },
+        error => {
+          this.$message(error);
+        }
+      );
+
       this.dialogVisible = false;
       this.$store.dispatch("personalShowAction", false);
     },
     ingist() {
-      search.registry(this.account, this.pass).then(
+      search.registry(this.account, this.password).then(
         result => {
           if (parseInt(result.code) === 0) {
             this.$message("注册成功");
             this.dialogVisible = false;
+            this.$store.commit("loginShow", false);
+            this.$store.commit("personalShow", true);
+            this.$store.commit("accountMu", this.account);
+            this.$router.push("/personal");
             return;
-          };
-         this.$message("该账户已经注册，请重新输入"); 
-        },error => {
+          }
+          this.$message("该账户已经注册，请重新输入");
+        },
+        error => {
           window.console.log(error);
           this.$message(error);
         }
       );
-      
     }
   },
   components: {}

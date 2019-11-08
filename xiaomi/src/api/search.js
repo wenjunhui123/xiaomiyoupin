@@ -12,4 +12,10 @@ function registry(account,password){
     })
 }
 
-export default {querySearchList,registry}
+function login(account,password){
+    return axios.post('/user/login',{
+        account,
+        password
+    })
+}
+export default {querySearchList,registry,login}

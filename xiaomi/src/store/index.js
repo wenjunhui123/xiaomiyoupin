@@ -9,11 +9,13 @@ export default new Vuex.Store({
   nameSpace: true,
   modules: {
     search,
-
+    
   },
   state: {
     personalIsShow: true,
     login: false,
+    account:'',
+    password:'',
   },
   mutations: {
     personalShow(state, payload) {
@@ -21,6 +23,13 @@ export default new Vuex.Store({
     },
     loginShow(state, payload) {
       state.login = payload;
+    },
+    accountMu(state, payload){
+      window.console.log(payload);
+      state.account = payload;
+    },
+    passwordMu(state, payload){
+      state.password = payload;
     }
   },
   actions: {
