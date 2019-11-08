@@ -4,12 +4,13 @@
       <home-header></home-header>
       <home-banner></home-banner>
       <home-imagenav></home-imagenav>
-      <home-more name="热门"></home-more>
+      <home-more name="热门" :show="false"></home-more>
       <home-hot></home-hot>
-      <home-more name="限时购"></home-more>
+      <home-more name="限时购" :msg="this.aimTime" :hours="this.aimTime.substring(11,13)"></home-more>
       <time-buy></time-buy>
-      <home-more name="手机"></home-more>
+      <home-more name="手机" :show="false"></home-more>
       <home-phone></home-phone>
+      <!-- <more-goods :msg="this.aim_time"></more-goods> -->
       <home-wait></home-wait>
       <Tab></Tab>
       <router-link class="youpin" to="/vip">
@@ -34,6 +35,7 @@ import HomeMore from "../../components/More";
 import HomeWait from "./Wait";
 import TimeBuy from "./TimeBuy";
 import HomePhone from "./Phone";
+// import MoreGoods from "./MoreGoods";
 export default {
   components: {
     Tab,
@@ -44,10 +46,13 @@ export default {
     HomeMore,
     TimeBuy,
     HomePhone,
+    // MoreGoods,
     HomeWait
   },
   data() {
-    return {};
+    return {
+      aimTime: "2019-11-10 04:00:00"
+    };
   }
 };
 </script>
@@ -68,9 +73,6 @@ export default {
     }
   }
 }
-</style>
-
-
 .app {
   width: 100%;
   height: 100%;
@@ -122,3 +124,4 @@ export default {
     }
   }
 }
+</style>
