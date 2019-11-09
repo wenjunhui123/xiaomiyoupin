@@ -1,69 +1,29 @@
 <template>
   <div class="main-hot-box">
-    <div class="title-box">
-      <span>热门</span>
-      <a>
-        <span>更多</span>
-        <img
-          src="https://static.home.mi.com/youpin/static/m/res/images/std_right_arrow_gray.png"
-          alt
-        />
-      </a>
-    </div>
-
     <div class="t-row-box">
-      <div class="row-tool">
-        <img
-          alt
-          src="https://shop.io.mi-img.com/app/shop/img?id=shop_dc4955a7f668f79135bf689005746475.png&amp;w=537&amp;h=426,https://shop.io.mi-img.com/app/shop/img?id=shop_1d26c4fec9f7de43e090f5058a6532b2.png&amp;w=540&amp;h=420&amp;t=webp"
-        />
+      <div class="row-tool" v-for="item in data.slice(0,2)" :key="item.id">
+        <img alt v-lazy="item.pic" />
         <div class="t-row-text">
-          <p class="row-title">鹿客智能指纹锁Classic</p>
-          <span class="row-price">￥1699</span>
-        </div>
-      </div>
-      <div class="row-tool">
-        <img
-          alt
-          src="https://shop.io.mi-img.com/app/shop/img?id=shop_fbac9bcd7a15e60e3d6e864c66a62047.png&amp;w=540&amp;h=420,https://shop.io.mi-img.com/app/shop/img?id=shop_06a052b2c28bc7c80ad4ce96919fb82d.png&amp;w=540&amp;h=420&amp;t=webp"
-        />
-        <div class="t-row-text">
-          <p class="row-title">小米5X</p>
-          <span class="row-price">￥1199</span>
+          <p class="row-title">{{item.title}}</p>
+          <span class="row-price">{{item.price}}</span>
         </div>
       </div>
     </div>
     <div class="three-row-box">
       <div class="three-row">
-        <img
-          src="https://shop.io.mi-img.com/app/shop/img?id=shop_d52f9fa59bcd507e9807e4014ab55418.jpeg&amp;w=537&amp;h=852&amp;t=webp"
-          alt
-        />
+        <img v-lazy="data[2].pic" alt />
         <div class="t-row-text">
-          <p class="row-title">米家空气净化器Pro</p>
-          <p class="row-alt">澎湃动力，净化能力更快更强</p>
-          <span class="row-price">￥1499</span>
+          <p class="row-title">{{data[2].title}}</p>
+          <p class="row-alt">{{data[2].alt}}</p>
+          <span class="row-price">{{data[2].price}}</span>
         </div>
       </div>
       <div class="three-row">
-        <div class="row-tool">
-          <img
-            alt
-            src="https://shop.io.mi-img.com/app/shop/img?id=shop_68eaff32dfae580e6ca7250ca7fa4a0b.png&amp;w=537&amp;h=426&amp;t=webp"
-          />
+        <div class="row-tool" v-for="item in data.slice(data.length-2)" :key="item.id">
+          <img alt v-lazy="item.pic" />
           <div class="t-row-text">
-            <p class="row-title">米家扫地机器人</p>
-            <span class="row-price">￥1699</span>
-          </div>
-        </div>
-        <div class="row-tool">
-          <img
-            alt
-            src="https://shop.io.mi-img.com/app/shop/img?id=shop_da726d59c27705dedc637fcc169aebdf.png&amp;w=540&amp;h=420&amp;t=webp"
-          />
-          <div class="t-row-text">
-            <p class="row-title">石墨烯发热腰带</p>
-            <span class="row-price">￥116</span>
+            <p class="row-title">{{item.title}}</p>
+            <span class="row-price">{{item.price}}</span>
           </div>
         </div>
       </div>
@@ -76,46 +36,52 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      data: [
+        {
+          id: 1,
+          pic:
+            "https://shop.io.mi-img.com/app/shop/img?id=shop_dc4955a7f668f79135bf689005746475.png&amp;w=537&amp;h=426,https://shop.io.mi-img.com/app/shop/img?id=shop_1d26c4fec9f7de43e090f5058a6532b2.png&amp;w=540&amp;h=420&amp;t=webp",
+          title: "米家扫地机器人",
+          price: "￥1699"
+        },
+        {
+          id: 2,
+          pic:
+            "https://shop.io.mi-img.com/app/shop/img?id=shop_fbac9bcd7a15e60e3d6e864c66a62047.png&amp;w=540&amp;h=420,https://shop.io.mi-img.com/app/shop/img?id=shop_06a052b2c28bc7c80ad4ce96919fb82d.png&amp;w=540&amp;h=420&amp;t=webp",
+          title: "小米5X",
+          price: "￥1199"
+        },
+        {
+          id: 3,
+          pic:
+            "https://shop.io.mi-img.com/app/shop/img?id=shop_d52f9fa59bcd507e9807e4014ab55418.jpeg&amp;w=537&amp;h=852&amp;t=webp",
+          title: "米家空气净化器Pro",
+          price: "￥1499",
+          alt: "澎湃动力，净化能力更快更强"
+        },
+        {
+          id: 4,
+          pic:
+            "https://shop.io.mi-img.com/app/shop/img?id=shop_68eaff32dfae580e6ca7250ca7fa4a0b.png&amp;w=537&amp;h=426&amp;t=webp",
+          title: "米家扫地机器人",
+          price: "￥1699"
+        },
+        {
+          id: 5,
+          pic:
+            "https://shop.io.mi-img.com/app/shop/img?id=shop_da726d59c27705dedc637fcc169aebdf.png&amp;w=540&amp;h=420&amp;t=webp",
+          title: "石墨烯发热腰带",
+          price: "￥116"
+        }
+      ]
+    };
   }
 };
 </script>
 
 
 <style lang="less" scoped>
-.title-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 0.05rem;
-  padding-left: 0.08rem;
-  padding-right: 0.13rem;
-  height: 0.47rem;
-  background: #fff;
-
-  span {
-    flex: 11;
-    font-size: 0.15rem;
-    color: rgb(51, 51, 51);
-  }
-
-  a {
-    font-size: 0.13rem;
-    color: rgb(153, 153, 153);
-
-    span {
-      color: rgb(153, 153, 153);
-    }
-
-    img {
-      width: 0.05rem;
-      height: 0.1rem;
-      margin-left: 0.06rem;
-      margin-top: -0.04rem;
-    }
-  }
-}
-
 .main-hot-box {
   .t-row-box {
     display: flex;

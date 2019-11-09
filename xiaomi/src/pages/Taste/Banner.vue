@@ -44,7 +44,6 @@
 
 <script>
 import "swiper/css/swiper.css";
-
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
@@ -69,7 +68,7 @@ export default {
 </script>
 
 <style lang='less' scope>
-swiper-slide img {
+.swiper-slide img {
   border-radius: 0.06rem;
   // margin-right: 0.1rem;
 }
