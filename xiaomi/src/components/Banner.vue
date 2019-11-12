@@ -1,7 +1,8 @@
 <template>
-  <div class="swiper-container'" >
-    <swiper :options="swiperOption" v-if="arr.length!=0" class='swiper-wrapper'>
-      <swiper-slide class="swiper-slide" v-for="item in arr" :key="item.id">
+  <div class="swiper-container'">
+    <swiper :options="swiperOption" class="swiper-wrapper">
+      <!--  v-if="arr.length!=0" -->
+      <swiper-slide class="swiper-slide" v-for="item in bannerList" :key="item.id">
         <img :src="item.pic" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -12,6 +13,7 @@
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+// import { mapState } from "vuex";
 export default {
   components: {
     swiper,
@@ -19,38 +21,39 @@ export default {
   },
   data() {
     return {
-      arr: [
-        {
-          id: 1,
-          pic:
-            "https://shop.io.mi-img.com/app/shop/img?id=shop_9334c3fd5811978f84fe7035ae54b00d.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-          title: ""
-        },
-        {
-          id: 2,
-          pic:
-            "https://shop.io.mi-img.com/app/shop/img?id=shop_800b78d4c2287c6c7a3681076f9b1606.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-          title: ""
-        },
-        {
-          id: 3,
-          pic:
-            "https://shop.io.mi-img.com/app/shop/img?id=shop_a1e493684d4b9a60d2c4445e95960c81.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-          title: ""
-        },
-        {
-          id: 4,
-          pic:
-            "https://shop.io.mi-img.com/app/shop/img?id=shop_7f79014b3984f9a2ca0ccd989fee960a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-          title: ""
-        },
-        {
-          id: 5,
-          pic:
-            "https://shop.io.mi-img.com/app/shop/img?id=shop_940e96da0d8707e657c58c5d7278e64a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-          title: ""
-        }
-      ],
+      bannerList: "",
+      // arr: [
+      //   {
+      //     id: 1,
+      //     pic:
+      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_9334c3fd5811978f84fe7035ae54b00d.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
+      //     title: ""
+      //   },
+      //   {
+      //     id: 2,
+      //     pic:
+      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_800b78d4c2287c6c7a3681076f9b1606.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
+      //     title: ""
+      //   },
+      //   {
+      //     id: 3,
+      //     pic:
+      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_a1e493684d4b9a60d2c4445e95960c81.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
+      //     title: ""
+      //   },
+      //   {
+      //     id: 4,
+      //     pic:
+      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_7f79014b3984f9a2ca0ccd989fee960a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
+      //     title: ""
+      //   },
+      //   {
+      //     id: 5,
+      //     pic:
+      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_940e96da0d8707e657c58c5d7278e64a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
+      //     title: ""
+      //   }
+      // ],
       // imgIndex: 1,
       swiperOption: {
         // some swiper options/callbacks
@@ -73,7 +76,14 @@ export default {
         }
       }
     };
-  }
+  },
+  created() {
+    if (this.$store.state.banner.bannerList === null) {
+      this.$store.dispatch("banner/updateBanner");
+    }
+    this.bannerList = this.$store.state.banner.bannerList;
+  },
+ 
 };
 </script>
 

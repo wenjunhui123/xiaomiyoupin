@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Tab from "../../components/Tab";
+import Tab from "../../components/Tab"; 
 import HomeHeader from "./Header";
 import HomeBanner from "../../components/Banner";
 import HomeImagenav from "./imageNav";
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      aimTime: "2019-11-10 04:00:00"
+      aimTime: "2019-11-13 04:00:00"
     };
   }
 };

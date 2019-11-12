@@ -2,20 +2,20 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 import search from './search';
-
+import banner from './banner';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
   nameSpace: true,
   modules: {
     search,
-    
+    banner
   },
   state: {
     personalIsShow: true,
     login: false,
-    account:'',
-    password:'',
+    account: '',
+    password: '',
   },
   mutations: {
     personalShow(state, payload) {
@@ -24,11 +24,11 @@ export default new Vuex.Store({
     loginShow(state, payload) {
       state.login = payload;
     },
-    accountMu(state, payload){
+    accountMu(state, payload) {
       window.console.log(payload);
       state.account = payload;
     },
-    passwordMu(state, payload){
+    passwordMu(state, payload) {
       state.password = payload;
     }
   },
