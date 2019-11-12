@@ -11,7 +11,8 @@ const {
 } = require('../utils/promiseFs');
 
 route.get('/list', (req, res) => {
-	let data = req.$slidersDATA;
+    let data = req.$slidesDATA;
+    console.log(req)
 	// data = data.map(item => {
 	// 	return {
 	// 		id: item.id,
@@ -29,4 +30,4 @@ route.get('/list', (req, res) => {
 		codeText: 'no matching data was found!'
 	}));
 });
-
+module.exports = route

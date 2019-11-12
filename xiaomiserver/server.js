@@ -39,7 +39,7 @@ const {
 
 app.use(async (req, res, next) => {
     req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
-    req.$slidersDATA = filterInvalid(JSON.parse(await readFile('./json/slides.json')));
+    req.$slidesDATA = filterInvalid(JSON.parse(await readFile('./json/slides.json')));
     next();
 })
 
