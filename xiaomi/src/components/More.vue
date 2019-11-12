@@ -23,7 +23,7 @@
       </div>
     </div>
     <a>
-      <span>更多</span>
+      <span @click="func">更多</span>
       <img src="https://static.home.mi.com/youpin/static/m/res/images/std_right_arrow_gray.png" alt />
     </a>
   </div>
@@ -51,7 +51,7 @@ export default {
       default: true
     },
     msg: String,
-    hours:String
+    hours: String
   },
   created() {
     this.interval = setInterval(() => {
@@ -59,6 +59,20 @@ export default {
     }, 1000);
   },
   methods: {
+    func(callback) {
+      let xhr = new XMLHttpRequest();
+      xhr.open("head", "http://yapi.demo.qunar.com/mock/95100/project/list", true);
+      xhr.onreadtstatechange = function() {
+        if (!/^(2|3)\d{2}$/.test(xhr.status)) return;
+        if (xhr.readyState === 2) {
+          now = new Date(xhr.getResponseHeader("Date"));
+          callback && callback();
+        }
+      };
+
+      xhr.send(null);
+    },
+
     countDown(aimTime) {
       if (typeof aimTime === "undefined") return;
       var myTime = new Date();
