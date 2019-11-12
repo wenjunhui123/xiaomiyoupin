@@ -204,14 +204,14 @@ export default {
   //     window.console.log(this.$store.state.account,1);
   //     next(false);
   //   }
-    
+
   // },
   created() {
     this.isShow = this.$store.state.personalIsShow;
     this.isisShow = this.$store.state.login;
   },
   computed: {
-   /*  changeShow(){
+    /*  changeShow(){
       let show = null;
       show = this.$store.state.personalIsShow;
       return show;
@@ -231,18 +231,6 @@ export default {
 </script>
 
 <style lang='less' scoped>
-<<<<<<< HEAD
-.header{
-  width:100%;
-  height: 1rem;
-  background: url('https://app.youpin.mi.com/youpin/static/m/res/images/personal_bg_top.png') center center;
-  background-size: cover;
-  cursor: pointer;
-  display: flex;
-  flex-flow: row wrap;
-  .center{
-      padding: .2rem .25rem;
-=======
 .personal {
   width: 100%;
   height: 100%;
@@ -256,7 +244,6 @@ export default {
         center center;
       background-size: cover;
       cursor: pointer;
->>>>>>> 5ce9c0816c7dc855aca429575732422590ed3ace
       display: flex;
       flex-flow: row wrap;
       .center {

@@ -44,15 +44,13 @@ export default {
     actions: {
         updateBanner(context) {
             let commitN = "updateBannerList";
-            // context.commit(commitName,bannerList)
+            // context.commit(commitN,bannerList)
             banner().then(result => {
                 if (parseInt(result.code) === 0) {
-                     context.commit(commitN,result.data);
-                    //  console.log(result.data);
+                     context.commit(commitN,);
                      return;
                 }
-            }).catch(reason=>{
-                context.commit(commitN,[])
+                return Promise.reject();
             })
         }
     }
