@@ -14,7 +14,7 @@ import Login from '../pages/Personal/Login';
 import Order from '../pages/Personal/Order';
 import Vip from '../pages/Vip/Vip';
 Vue.use(VueRouter);
-export default new VueRouter({
+ const router = new VueRouter({
     mode: 'hash',
     routes: [{
         path: '/',
@@ -64,6 +64,13 @@ export default new VueRouter({
         path: '*',
         redirect: '/home'
     }, ]
-
-
 })
+export default router
+
+// router.beforeEach((to,from,next)=>{
+// if(to.path==='/personal' && from.path==='/personal/login'){
+//     if(this.$store.state.length === 0) return;
+//     next();
+// }
+// })
+
