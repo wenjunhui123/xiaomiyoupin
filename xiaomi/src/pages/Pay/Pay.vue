@@ -26,7 +26,7 @@
             </template>
             <Radio slot="right-icon" checked-color="#E0AB70" :name="0" />
           </Cell>
-          <Cell style="padding:0"  clickable @click="payMethod = 1">
+          <Cell style="padding:0" clickable @click="payMethod = 1">
             <template slot="title">
               <img src="https://app.youpin.mi.com/youpin/static/m/res/images/pay_mipay.png" alt />
               <span>小米钱包</span>
@@ -48,8 +48,7 @@
         </div>
         <div style="width: calc(100% - .86rem - .1rem)">
           <p>
-           <Tag :plain="true" :round="true" type="danger">特价</Tag>
-           左点小艾智能艾灸盒（套餐版）
+            <Tag :plain="true" :round="true" type="danger">特价</Tag>左点小艾智能艾灸盒（套餐版）
           </p>
           <p class="price">
             <span>
@@ -145,17 +144,27 @@ import "vant/lib/cell-group/style";
 import Tag from "vant/lib/tag";
 import "vant/lib/tag/style";
 
+
 export default {
   components: { RadioGroup, Radio, Cell, CellGroup, Tag },
   data() {
     return {
       payMethod: 0,
       userInfo: {
-        name: 'd',
-        phone: '',
-        address: ''
+        name: "符宗望",
+        phone: "183****6222",
+        address: "北京市昌平区回龙观东大街回龙观东大街回龙观东大街回龙观东大街"
       }
-    }
+    };
+  },
+  created() {
+   /*  this.$axios.get("/info").then(res => {
+      if (parseInt(this.code === 0)) {
+        this.name = data.name;
+        this.phone = data.phone;
+      }
+    }); */
+    console.log(MockData)
   }
 };
 </script>
