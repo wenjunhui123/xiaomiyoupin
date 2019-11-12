@@ -61,7 +61,7 @@ export default new VueRouter({
         component: Vip
     }, 
    {
-        path: '/*',
+        path: '*',
         redirect: '/home'
     }, ]
 

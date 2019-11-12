@@ -2,7 +2,7 @@
   <div class="main-hot-box">
     <div class="t-row-box">
       <div class="row-tool" v-for="item in data.slice(0,2)" :key="item.id">
-        <img alt :src="item.pic" />
+        <img alt v-lazy="item.pic" />
         <div class="t-row-text">
           <p class="row-title">{{item.title}}</p>
           <span class="row-price">{{item.price}}</span>
@@ -11,7 +11,7 @@
     </div>
     <div class="three-row-box">
       <div class="three-row">
-        <img :src="data[2].pic" alt />
+        <img v-lazy="data[2].pic" alt />
         <div class="t-row-text">
           <p class="row-title">{{data[2].title}}</p>
           <p class="row-alt">{{data[2].alt}}</p>
@@ -20,7 +20,7 @@
       </div>
       <div class="three-row">
         <div class="row-tool" v-for="item in data.slice(data.length-2)" :key="item.id">
-          <img alt :src="item.pic" />
+          <img alt v-lazy="item.pic" />
           <div class="t-row-text">
             <p class="row-title">{{item.title}}</p>
             <span class="row-price">{{item.price}}</span>

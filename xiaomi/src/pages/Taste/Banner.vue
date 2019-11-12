@@ -5,7 +5,7 @@
     style="height: 1.715rem;width:3.43rem; border-radius: 0.06rem;"
   >
     <!-- slides -->
-    <swiper-slide style>
+    <swiper-slide>
       <img
         src="https://img.youpin.mi-img.com/editor1/9c819d8470c226a2b4f14d6888775a5c.jpeg?w=1080&amp;h=540"
         style="height: 100%;width:100%;"
@@ -44,7 +44,6 @@
 
 <script>
 import "swiper/css/swiper.css";
-
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {

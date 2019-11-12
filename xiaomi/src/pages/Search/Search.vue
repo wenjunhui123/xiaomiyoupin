@@ -40,7 +40,7 @@
 
 <script>
 import types from "../../store/store-types";
-import {registry} from '../../api/search';
+import search from '../../api/search';
 export default {
   data() {
     return {
@@ -73,9 +73,12 @@ export default {
       });
       this.history.push(item);
       this.input1 = item.title;
-      registry('wenjunhui',1234567890).then(result=>{
-        console.log(result)
+      search.registry('wenjunhui','1234567890').then(result=>{
+        window.console.log(result)
+      },error=>{
+         window.console.log(error)
       })
+      window.console.log(search.registry)
     },
     deleteH() {
       this.history = [];

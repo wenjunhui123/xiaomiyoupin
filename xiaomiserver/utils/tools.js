@@ -1,6 +1,6 @@
 function handleMD5(val){
   val = val.substring(4);
-  val = val.spilt('').reverse().join('');
+  val = val.split('').reverse().join('');
   val = val.substring(4);
   return val;
 }
