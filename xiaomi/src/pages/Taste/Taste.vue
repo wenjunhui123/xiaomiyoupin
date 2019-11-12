@@ -16,13 +16,14 @@ import Tab from "../../components/Tab";
 import Banner from "./Banner";
 import ProductList from "./ProductList";
 import Found from "./Found";
+
 export default {
   components: {
     Tab,
     Banner,
     ProductList,
     Found
-  }
+  },
 };
 </script>
 

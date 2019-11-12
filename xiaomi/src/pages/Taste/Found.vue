@@ -1,38 +1,64 @@
 <template>
-  <ul class="savour_container">
-    <li>
-      <a href="https://static.home.mi.com/app/shop/content?aid=qcfdc5039b04b3193&v=1503656833">
+  <div>
+    <div class="weekly">
+      <span>
+        独家专栏
         <img
-          src="https://shop.io.mi-img.com/app/shop/img?id=shop_246bf0cb90a80b76215511294f86a134.jpeg&w=1080&h=501"
+          src="https://app.youpin.mi.com/youpin/static/m/res/images/device_shop_right_arrow.png"
           alt
         />
-        <span>不去海底捞，家里做饭更健康</span>
-        <b>有品生活每一天</b>
-        <p>去发现</p>
-      </a>
-    </li>
-
-    <li>
-      <a href="https://static.home.mi.com/app/shop/content?aid=p2878503985df23b2&v=1503648502">
-        <img
-          src="https://shop.io.mi-img.com/app/shop/img?id=shop_b2eebc99d9f41ea4f53895ece4eead3d.jpeg&w=960&h=480"
-          alt
-        />
-        <span>【开学新玩物】小米VR眼镜轻体验</span>
-        <b>有品生活每一天</b>
-        <p>去发现</p>
-      </a>
-    </li>
-  </ul>
+      </span>
+    </div>
+    
+    <ul class="savour_container">
+      <li v-for="item in found" :key="item.article_id">
+        <router-link :to="item.url">
+          <img :src="item.pic_url" />
+          <span>{{ item.title }}</span>
+          <b>{{ item.subtitle}}</b>
+          <p>去发现</p>
+        </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
+import MockData from "./mockData";
+
 export default {
-  name: "Found"
+  name: "Found",
+  data() {
+    return {
+      found: []
+    };
+  },
+  created() {
+    this.found = MockData;
+  }
 };
 </script>
 
-<style lang='less' scope>
+<style lang='less' scoped>
+.weekly {
+  height: 0.4rem;
+  margin-top: 0.1rem;
+  position: relative;
+
+  span {
+    font-size: 0.14rem;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 0.13rem;
+      height: 0.13rem;
+    }
+  }
+}
 .savour_container {
   box-sizing: border-box;
 
