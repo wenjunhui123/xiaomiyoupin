@@ -1,4 +1,4 @@
-import { banner } from "../api/search";
+import type from "../api/search";
 // let bannerList = [
 //     {
 //         id: 1,
@@ -45,10 +45,11 @@ export default {
         updateBanner(context) {
             let commitN = "updateBannerList";
             // context.commit(commitN,bannerList)
-            banner().then(result => {
+            type.banner().then(result => {
                 if (parseInt(result.code) === 0) {
-                     context.commit(commitN,);
-                     return;
+                    context.commit(commitN, result.data);
+                    console.log(result.data)
+                    return;
                 }
                 return Promise.reject();
             })

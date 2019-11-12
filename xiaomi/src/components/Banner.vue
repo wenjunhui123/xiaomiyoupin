@@ -2,8 +2,8 @@
   <div class="swiper-container'">
     <swiper :options="swiperOption" class="swiper-wrapper">
       <!--  v-if="arr.length!=0" -->
-      <swiper-slide class="swiper-slide" v-for="item in bannerList" :key="item.id">
-        <img :src="item.pic" alt />
+      <swiper-slide class="swiper-slide" v-for="(item,index) in bannerList" :key="index">
+        <img :src="item.url" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
