@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import "swiper/css/swiper.css";
 import VueLazyload from 'vue-lazyload';
+import axios from './api/axios'
 
 
 Vue.use(VueAwesomeSwiper);
@@ -18,6 +19,8 @@ Vue.use(VueLazyload,{
   loading:'./assets/images/loading_v2.png',
   try:6,
 });
+
+Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false
 
