@@ -2,7 +2,7 @@
   <div class="swiper-container'">
     <swiper :options="swiperOption" class="swiper-wrapper">
       <!--  v-if="arr.length!=0" -->
-      <swiper-slide class="swiper-slide" v-for="(item,index) in bannerList" :key="index">
+      <swiper-slide class="swiper-slide" v-for="item in bannerList" :key="item.link">
         <img :src="item.url" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      bannerList: "",
+      bannerList: this.$store.state.banner.bannerList,
       // arr: [
       //   {
       //     id: 1,
@@ -82,8 +82,14 @@ export default {
       this.$store.dispatch("banner/updateBanner");
     }
     this.bannerList = this.$store.state.banner.bannerList;
+    this.$forceUpdate();
   },
- 
+  watch: {
+    // bannerList() {
+    //   //   // return this.$store.state.banner.bannerList;
+    //   this.bannerList = this.$store.state.banner.bannerList;
+    // }
+  }
 };
 </script>
 
