@@ -2,7 +2,7 @@
   <div>
     <div class="main-box">
       <home-header></home-header>
-      <home-banner></home-banner>
+      <home-banner v-if="showBanner"></home-banner>
       <home-imagenav></home-imagenav>
       <home-more name="热门" :show="false"></home-more>
       <home-hot></home-hot>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Tab from "../../components/Tab"; 
+import Tab from "../../components/Tab";
 import HomeHeader from "./Header";
 import HomeBanner from "../../components/Banner";
 import HomeImagenav from "./imageNav";
@@ -49,10 +49,21 @@ export default {
     // MoreGoods,
     HomeWait
   },
+  created() {
+    if (this.$store.state.banner.bannerList === null) {
+      this.$store.dispatch("banner/updateBanner");
+    }
+  },
   data() {
     return {
       aimTime: "2019-11-13 04:00:00"
     };
+  },
+  computed: {
+    showBanner() {
+      let show = this.$store.state.banner.bannerList;
+      return show;
+    }
   }
 };
 </script>

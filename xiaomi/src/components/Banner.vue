@@ -1,8 +1,8 @@
 <template>
   <div class="swiper-container'">
-    <swiper :options="swiperOption" class="swiper-wrapper">
+    <swiper :options="swiperOption" ref="mySwiper" class="swiper-wrapper">
       <!--  v-if="arr.length!=0" -->
-      <swiper-slide class="swiper-slide" v-for="item in bannerList" :key="item.link">
+      <swiper-slide class="swiper-slide" v-for="item in $store.state.banner.bannerList" :key="item.link">
         <img :src="item.url" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -10,51 +10,29 @@
   </div>
 </template>    
 
-
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 // import { mapState } from "vuex";
 export default {
+  name: 'carrousel',
   components: {
     swiper,
     swiperSlide
   },
   data() {
     return {
-      bannerList: this.$store.state.banner.bannerList,
-      // arr: [
-      //   {
-      //     id: 1,
-      //     pic:
-      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_9334c3fd5811978f84fe7035ae54b00d.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-      //     title: ""
+      // bannerList: this.$store.state.banner.bannerList,
+      //  swiperOption: {
+      //    observel:true,
+      //    observeParents:true,
+      //     pagination: {
+      //       el: '.swiper-pagination'
+      //     }
       //   },
-      //   {
-      //     id: 2,
-      //     pic:
-      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_800b78d4c2287c6c7a3681076f9b1606.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-      //     title: ""
-      //   },
-      //   {
-      //     id: 3,
-      //     pic:
-      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_a1e493684d4b9a60d2c4445e95960c81.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-      //     title: ""
-      //   },
-      //   {
-      //     id: 4,
-      //     pic:
-      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_7f79014b3984f9a2ca0ccd989fee960a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-      //     title: ""
-      //   },
-      //   {
-      //     id: 5,
-      //     pic:
-      //       "https://shop.io.mi-img.com/app/shop/img?id=shop_940e96da0d8707e657c58c5d7278e64a.jpeg&w=1080&h=450&crop=a_0_0_1080_480&t=webp",
-      //     title: ""
-      //   }
-      // ],
-      // imgIndex: 1,
+      //   swiperSlides: [],
+       
+
+
       swiperOption: {
         // some swiper options/callbacks
         //分页器挂载到swiper-pagination类对应的元素上
@@ -81,15 +59,33 @@ export default {
     if (this.$store.state.banner.bannerList === null) {
       this.$store.dispatch("banner/updateBanner");
     }
-    this.bannerList = this.$store.state.banner.bannerList;
-    this.$forceUpdate();
+    this.swiperSlides = this.$store.state.banner.bannerList;
   },
   watch: {
     // bannerList() {
     //   //   // return this.$store.state.banner.bannerList;
     //   this.bannerList = this.$store.state.banner.bannerList;
     // }
-  }
+  },
+  computed:{
+swiper() {
+        return this.$refs.mySwiper.swiper
+      }
+  },
+    mounted() {
+    //   let i = 0;
+    //  let timer = setInterval(() => {
+    //     if (this.swiperSlides.length < this.$store.state.banner.bannerList.length) {
+    //       this.swiperSlides.push(this.$store.state.banner.bannerList[i]);
+    //       i++;
+    //       return;
+    //     }
+    //  clearInterval(timer);
+    //  timer = null;
+    //     window.console.log(this.swiperSlides)
+    //   },0)
+    //   this.swiper.slideTo(3, 1000, true)
+    }
 };
 </script>
 
