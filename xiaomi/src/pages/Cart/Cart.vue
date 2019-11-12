@@ -1,10 +1,15 @@
 <template>
   <div class="cart">
-    <Banner1></Banner1>
+    <div class="top">
+      <p class="icon"><img src="https://app.youpin.mi.com/youpin/static/m/res/images/std_titlebar_back_white.png" alt=""></p>
+      <p class="car">购物车</p>
+      <p class="edit">编辑</p>
+    </div>
     <CartGoods :cartgood="item" v-for="(item,index) in cartgoods" :key="index+'cartgoods'"></CartGoods>
+    
     <h2  >为你推荐</h2>
     <Good :good="item" v-for="(item,index) in goods" :key="index"></Good>
-    <Tab></Tab>
+    <Cost cost='a'></Cost>
   </div>
 </template>
 
@@ -13,6 +18,7 @@ import Banner1 from "../../components/Banner1";
 import Tab from "../../components/Tab";
 import Good from "../../components/Good";
 import CartGoods from '../../components/CartGoods';
+import Cost from './Cost';
 export default {
   data() {
     return {
@@ -86,7 +92,8 @@ export default {
     Tab,
     Banner1,
     Good,
-    CartGoods
+    CartGoods,
+    Cost
   }
 };
 </script>
@@ -94,6 +101,41 @@ export default {
 <style lang='less' scoped>
 .cart{
   width: 100%;
+  position: relative;
+  .top{
+    box-sizing: border-box;
+    height: 1.8rem;
+    background: url('https://app.youpin.mi.com/youpin/static/m/res/images/checkout_new_top_bg.png') center; 
+    background-size: cover;
+    padding: .23rem 0;
+    display: flex;
+    flex-direction:row;
+    .icon{
+      width:.42rem;
+      height: .42rem;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .car{
+      width: 90%;
+      height: .42rem;
+      line-height: .42rem;
+      text-align: center;
+      font-size: .2rem;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+    .edit{
+      width: 15%;
+      height: .42rem;
+      line-height: .42rem;
+      box-sizing: border-box;
+      font-size:.14rem;
+      color: rgb(255, 255, 255);
+    }
+  }
   h2{
     width: 100%;
     height: 1rem;

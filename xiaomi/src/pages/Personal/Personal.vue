@@ -140,7 +140,7 @@ export default {
 
 <style lang='less' scoped>
 .header{
-  width: 3.2rem;
+  width:100%;
   height: 1rem;
   background: url('https://app.youpin.mi.com/youpin/static/m/res/images/personal_bg_top.png') center center;
   background-size: cover;
