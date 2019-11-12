@@ -39,12 +39,15 @@ const {
 
 app.use(async (req, res, next) => {
     req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
+    req.$slidesDATA = filterInvalid(JSON.parse(await readFile('./json/slides.json')));
     next();
 })
+
 
 /* 路由匹配 */
 
 app.use('/user', require('./routes/user'));
+app.use('/slides', require('./routes/slides'));
 
 app.use((req, res) => {
     res.status(404);

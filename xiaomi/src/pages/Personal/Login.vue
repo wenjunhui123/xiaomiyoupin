@@ -22,6 +22,7 @@ export default {
       password: ""
     };
   },
+ 
   methods: {
     handleClose(done) {
       this.$confirm("确认关闭？")
@@ -41,9 +42,9 @@ export default {
             this.$store.commit("accountMu", this.account);
             this.$router.push("/personal");
             return;
-          };
+          }
           this.dialogVisible = true;
-           this.$message("账号或者密码不匹配，请重新输入");
+          this.$message("账号或者密码不匹配，请重新输入");
         },
         error => {
           this.$message(error);

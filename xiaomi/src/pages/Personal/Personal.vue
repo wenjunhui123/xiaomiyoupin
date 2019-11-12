@@ -199,12 +199,19 @@ export default {
       isisShow: false
     };
   },
+  //  beforeRouteLeave:(to, from, next) => {
+  //   if(!this.$store.state.account === '请登录') {
+  //     window.console.log(this.$store.state.account,1);
+  //     next(false);
+  //   }
+
+  // },
   created() {
     this.isShow = this.$store.state.personalIsShow;
     this.isisShow = this.$store.state.login;
   },
   computed: {
-   /*  changeShow(){
+    /*  changeShow(){
       let show = null;
       show = this.$store.state.personalIsShow;
       return show;
