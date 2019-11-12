@@ -146,9 +146,6 @@ export default {
           padding: .05rem 0;
           line-height:.19rem;
         }
-        .last{
-          
-        }
       } 
   
     }
