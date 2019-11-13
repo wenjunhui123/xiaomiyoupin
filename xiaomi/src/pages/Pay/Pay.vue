@@ -2,6 +2,7 @@
   <div class="bg">
     <h1>
       <img
+        @click="backToCart"
         src="https://app.youpin.mi.com/youpin/static/m/res/images/std_titlebar_back_white.png"
         alt
       /> 确认订单
@@ -144,7 +145,6 @@ import "vant/lib/cell-group/style";
 import Tag from "vant/lib/tag";
 import "vant/lib/tag/style";
 
-
 export default {
   components: { RadioGroup, Radio, Cell, CellGroup, Tag },
   data() {
@@ -157,14 +157,10 @@ export default {
       }
     };
   },
-  created() {
-   /*  this.$axios.get("/info").then(res => {
-      if (parseInt(this.code === 0)) {
-        this.name = data.name;
-        this.phone = data.phone;
-      }
-    }); */
-    console.log(MockData)
+  methods: {
+    backToCart() {
+      window.history.go(-1);
+    }
   }
 };
 </script>
