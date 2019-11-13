@@ -10,13 +10,13 @@
         <h3>历史记录</h3>
         <i class="el-icon-delete" @click="deleteH"></i>
       </div>
-      <div class="historyContent">
+      <div class="historyContent" v-if="historyc?historyc:null">
         <el-button
           type="info"
           round
           v-for="(item,index) in history"
           v-text="item.title"
-          :key="index" 
+          :key="index"
         ></el-button>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="title">
         <h3>搜索发现</h3>
       </div>
-      <div class="searchCon">
+      <div class="searchCon" v-if="hotc?hotc:null">
         <el-button
           type="info"
           round
@@ -40,19 +40,20 @@
 
 <script>
 import types from "../../store/store-types";
-import search from '../../api/search';
+import search from "../../api/search";
 export default {
   data() {
     return {
       input1: "",
-      hot: "",
-      detailSearch: "",
-      history: ""
+      hot: null,
+      detailSearch: null,
+      history: null
     };
   },
   created() {
-    if (this.$store.state.search.searchList.detailSearch === null) {
-      this.$store.dispatch(types.SEARCH_QUERY_SEARCHLIST_ACTION, null);
+    if (this.$store.state.search.searchList === null) {
+      window.console.log(this.hot, this.history);
+      this.$store.dispatch(types.SEARCH_QUERY_SEARCHLIST_ACTION);
       return;
     }
     this.detailSearch = this.$store.state.search.searchList.detailSearch;
@@ -64,21 +65,19 @@ export default {
       window.history.go(-1);
     },
     search() {
-      this.$router.push({path:'/detail',query: { title: this.input1 }});
-
+      this.$router.push({ path: "/detail", query: { title: this.input1 } });
     },
     putHis(item) {
+      if (!this.history||!this.hot) {
+        this.history = this.$store.state.search.searchList.history;
+        this.hot = this.$store.state.search.searchList.hot;
+        return
+      }
       this.history = this.history.filter(item1 => {
         return item1.gid !== item.gid;
       });
       this.history.push(item);
       this.input1 = item.title;
-      search.registry('wenjunhui','1234567890').then(result=>{
-        window.console.log(result)
-      },error=>{
-         window.console.log(error)
-      })
-      window.console.log(search.registry)
     },
     deleteH() {
       this.history = [];
@@ -86,19 +85,30 @@ export default {
   },
   components: {},
   updated() {
-    this.$store.state.search.searchList.detailSearch = this.detailSearch;
-    this.$store.state.search.searchList.hot = this.hot;
-    this.$store.state.search.searchList.history = this.history;
+    if (!this.history||!this.hot) {
+        this.history = this.$store.state.search.searchList.history;
+        this.hot = this.$store.state.search.searchList.hot;
+        return
+      }
   },
   computed: {
     hotc() {
-      let hot = this.$store.state.search.searchList.hot;
+      let hot = this.$store.state.search.searchList;
+      if (hot) {
+        hot = hot.hot;
+      }
       return hot;
+    },
+    historyc() {
+      let history = this.$store.state.search.searchList;
+      if (history) {
+        history = history.history;
+      }
+     return history;
     }
   }
 };
 </script>
-
 <style lang='less' scoped>
 html,
 body {

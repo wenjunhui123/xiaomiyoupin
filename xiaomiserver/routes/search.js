@@ -11,7 +11,8 @@ const {
 } = require('../utils/promiseFs');
 
 route.get('/list', (req, res) => {
-    let data = req.$slidesDATA;
+    let data = req.$searchDATA;
+    console.log(data);
 	// data = data.map(item => {
 	// 	return {
 	// 		id: item.id,

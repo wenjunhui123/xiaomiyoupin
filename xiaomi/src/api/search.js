@@ -22,4 +22,9 @@ function login(account, password) {
 function banner() {
     return axios.get('/slides/list');
 }
-export default { querySearchList, registry, login, banner }
+
+function search(){
+    return axios.get('./search/list')
+}
+
+export default { querySearchList, registry, login, banner,search }

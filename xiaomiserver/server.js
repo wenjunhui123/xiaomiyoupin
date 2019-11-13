@@ -40,6 +40,7 @@ const {
 app.use(async (req, res, next) => {
     req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
     req.$slidesDATA = filterInvalid(JSON.parse(await readFile('./json/slides.json')));
+    req.$searchDATA = filterInvalid(JSON.parse(await readFile('./json/search.json')));
     next();
 })
 
@@ -48,6 +49,7 @@ app.use(async (req, res, next) => {
 
 app.use('/user', require('./routes/user'));
 app.use('/slides', require('./routes/slides'));
+app.use('/search', require('./routes/search'));
 
 app.use((req, res) => {
     res.status(404);
