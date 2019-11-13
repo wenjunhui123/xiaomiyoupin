@@ -6,7 +6,7 @@
           </div>
           <div class="right">
               <div class="but">
-                    合计：<span>￥249.00</span>
+                    合计：<span>￥298.00</span>
                 <div>结算<span>(1)</span></div>  
               </div>
               
@@ -15,7 +15,7 @@
       </div>
   </div>
 </template>
-
+ 
 <script>
 export default {
     props:{

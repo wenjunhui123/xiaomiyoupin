@@ -302,7 +302,7 @@ export default {
       height: 1.1rem;
       background-color: rgb(255, 255, 255);
       box-sizing: border-box;
-
+      
       .myOrder {
         width: 2.9rem;
         height: 0.4rem;
@@ -310,9 +310,13 @@ export default {
         padding-left: 0.2rem;
         padding-right: 0.1rem;
         border-bottom: 1px solid rgb(229, 229, 229);
+        display: flex;
+        flex-direction: row;
+        justify-items:flex-end;
         p {
           color: rgb(51, 51, 51);
           font-size: 0.14rem;
+          
         }
         span {
           display: inline-block;
