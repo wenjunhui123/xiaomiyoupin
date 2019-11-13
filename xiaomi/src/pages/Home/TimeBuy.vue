@@ -178,8 +178,7 @@ export default {
           }
         }
 
-        span {
-        }
+      
       }
       .timer-container-price {
         .container-price-num {

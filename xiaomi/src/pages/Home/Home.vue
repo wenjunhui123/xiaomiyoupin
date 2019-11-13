@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      aimTime: "2019-11-13 04:00:00"
+      aimTime: "2019-11-14 04:00:00"
     };
   },
   computed: {

@@ -4,10 +4,7 @@
       <div class="left">
         <p>
           <i>
-            <img
-              src="https://m.xiaomiyoupin.com/youpin/static/m/res/images/std_icon_checkbox_uncheck.png"
-              alt
-            />
+            <input type="checkbox" v-model="checked" @click="changeAll">
           </i>全选
         </p>
       </div>
@@ -37,11 +34,22 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      checked:true
+    };
   },
   methods: {
     toPay() {
       this.$router.push({ path: "/pay" });
+    },
+    changeAll(){
+      if(this.checked===true){
+        this.checked =false;
+        this.$store.commit('changeCheck',this.checked)
+        return;
+      }
+      this.checked =true;
+      this.$store.commit('changeCheck',this.checked)
     }
   }
 };

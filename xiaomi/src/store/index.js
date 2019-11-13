@@ -16,6 +16,7 @@ export default new Vuex.Store({
     login: false,
     account: '',
     password: '',
+    checked:null,
   },
   mutations: {
     personalShow(state, payload) {
@@ -30,6 +31,10 @@ export default new Vuex.Store({
     },
     passwordMu(state, payload) {
       state.password = payload;
+    },
+    changeCheck(state, payload){
+      window.console.log(payload);
+      state.checked = payload;
     }
   },
   actions: {
