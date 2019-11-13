@@ -62,14 +62,12 @@ export default {
 
 <style lang='less' scoped>
 .cartgood {
-  position: absolute;
-  top:.78rem;
-  left:0;
   box-sizing: border-box;
+  display: block;
   width: 100%;
-  height: 0.6rem;
   padding: 0.1rem;
   .list{
+    
     background-color: rgb(255,255,255) ;
     border-radius: .1rem;
     padding: .13rem .1rem .1rem .1rem;
@@ -88,6 +86,7 @@ export default {
         }
       }
       span{
+        width: .98rem;
         margin-left: .07rem;
         color:#333;
         font-weight: normal;

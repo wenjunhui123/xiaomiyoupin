@@ -69,7 +69,7 @@ export default {
             .banner {
                 
                 height: .64rem;
-                width: 2.23rem;
+                width: 100%;
                 img {
                     display: block;
                     width: 100%;

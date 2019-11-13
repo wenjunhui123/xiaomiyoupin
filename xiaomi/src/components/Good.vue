@@ -1,14 +1,22 @@
 <template>
   <div class="good">
-    <div class="left">
-      <img alt v-lazy="good.url" />
+    <div class="goodlist">
+      <div class="left">
+        <img alt v-lazy="good.url" />
+        <div class="text">
+          <h3 v-text="good.title" class="title"></h3>
+          <p v-text="good.describe" class="describe"></p>
+          <p v-text="good.price?'￥' +good.price + '元':null " class="pricee"></p>
+          <p v-text="good.gid?good.gid + '条评论':'暂无评论'" class="gid"></p>
+        </div>
+       
+      </div>
+      <!-- <div class="right">
+       
+        
+      </div> -->
     </div>
-    <div class="right">
-      <h3 v-text="good.title" class="title"></h3>
-      <p v-text="good.describe" class="describe"></p>
-      <p v-text="good.price?'人民币' +good.price + '元':null " class="pricee"></p>
-      <p v-text="good.gid?good.gid + '条评论':'暂无评论'" class="gid"></p>
-    </div>
+    
   </div>
 </template>
 
@@ -47,23 +55,37 @@ export default {
 .good {
   box-sizing: border-box;
   width: 100%;
-  height: 1.2rem;
-  .left {
-    float: left;
-    width: 30%;
-    height: 100%;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      padding: .2rem;
+  height: 100%;
+  .goodlist{
+    height: 2.68rem;
+    margin: .1rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction:row;
+    .left {
+      
+      width: 1.725rem;
+      height: 1.725rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .text{
+        padding: .04rem .05rem .09rem .05rem;
+        .title{
+        color: #333;
+        font-size: .14rem;
+        }
+        .describe{
+        color:rgb(153, 153, 153)
+        }
+        .pricee{
+        color: rgb(182, 9, 9);
+        }
+      }
+      
     }
   }
-  .right {
-    float: right;
-    padding-left: 0.2rem;
-    width: 60%;
   
-  }
 }
 </style>
